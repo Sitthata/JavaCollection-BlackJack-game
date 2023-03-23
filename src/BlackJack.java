@@ -22,6 +22,21 @@ public class BlackJack {
         dealerHand.add(deck.draw());
     }
 
+    public List<Card> getPlayerHand() {
+        return playerHand;
+    }
+
+    public List<Card> getDealerHand() {
+        return dealerHand;
+    }
+
+    public void printPlayerHand() {
+        System.out.println("Player hand: ");
+        for(Card card : playerHand) {
+            System.out.println(card.getRank() + " of " + card.getSuit());
+        }
+    }
+
     public void hitPlayer() {
         playerHand.add(deck.draw());
     }

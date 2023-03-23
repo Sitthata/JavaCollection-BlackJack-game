@@ -29,9 +29,6 @@ public enum Rank {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Rank{");
-        sb.append("valueName=").append(name);
-        sb.append('}');
-        return sb.toString();
+        return String.format("Rank: %s", name);
     }
 }

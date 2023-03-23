@@ -31,10 +31,6 @@ public class Card {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Card{");
-        sb.append("rank=").append(rank);
-        sb.append(", suit=").append(suit);
-        sb.append('}');
-        return sb.toString();
+        return String.format("%s of %s", rank, suit);
     }
 }

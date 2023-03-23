@@ -19,9 +19,9 @@ public class Main {
         int choice;
 
         while(playing) {
-
-            System.out.println("Player hand: " + blackJack.getPlayerScore());
             blackJack.deal();
+            System.out.println("Player hand: " + blackJack.getPlayerScore());
+            blackJack.printPlayerHand();
             System.out.println("Dealing hands...");
             System.out.println("Would you like to Hit or Stay?");
             System.out.println("1 : Hit\n2 : Stay");

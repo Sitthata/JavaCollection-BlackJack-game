@@ -1,10 +1,10 @@
 package card_enum;
 
 public enum Suit {
-    CLUBS("C"),
-    DIAMONDS("D"),
-    HEARTS("H"),
-    SPADES("S");
+    CLUBS("Clubs"),
+    DIAMONDS("Diamonds"),
+    HEARTS("Hearts"),
+    SPADES("Spades");
 
     private final String value;
 
@@ -14,9 +14,6 @@ public enum Suit {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("card.Suit{");
-        sb.append("value='").append(value).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return String.format("Suit: %s", value);
     }
 }
