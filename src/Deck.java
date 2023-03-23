@@ -25,12 +25,16 @@ public class Deck {
     }
 
     public Card draw() {
-        return cards.remove(0);
+        cards.remove(0);
+        return cards.get(0);
     }
 
-    public Card draw(int count){
+    public List<Card> draw(int count){
+        if(count < cards.size()) return null;
+        if(count > cards.size()) count = cards.size();
         // Remove the Cards from the front of the deck
-        return cards.remove(count);
+        cards.removeAll(cards.subList(0, count));
+        return cards.subList(0, count);
     }
 
     public void shuffle() {
