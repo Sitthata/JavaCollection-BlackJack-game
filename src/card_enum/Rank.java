@@ -11,9 +11,9 @@ public enum Rank {
     EIGHT(8, "8"),
     NINE(9, "9"),
     TEN(10, "10"),
-    JACK(11, "J"),
-    QUEEN(12, "Q"),
-    KING(13, "K");
+    JACK(10, "J"),
+    QUEEN(10, "Q"),
+    KING(10, "K");
 
     private final int value;
     private final String name;
