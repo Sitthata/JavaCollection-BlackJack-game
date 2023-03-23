@@ -10,21 +10,18 @@ public class Main {
         BlackJack blackJack = new BlackJack();
         Scanner sc = new Scanner(System.in);
 
-
-        // Dealing Cards
-
         System.out.println("Welcome to BlackJack!");
 
         boolean playing = true;
         int choice;
 
         while(playing) {
-
+            System.out.println("Dealing hands...");
             blackJack.deal();
+
             System.out.println("Player hand: " + blackJack.getPlayerScore());
             blackJack.printPlayerHand();
 
-            System.out.println("Dealing hands...");
             System.out.println("Would you like to Hit or Stay?");
             System.out.println("1 : Hit\n2 : Stay");
             System.out.print("Choice: ");
@@ -34,7 +31,6 @@ public class Main {
                 case 1:
                     blackJack.hitPlayer();
                     blackJack.hitDealer();
-
                     break;
                 case 2:
                     blackJack.hitDealer();
@@ -43,6 +39,7 @@ public class Main {
                     System.out.println("Invalid choice!");
                     break;
             }
+
             System.out.println("--------------------");
             System.out.println("Player hand: " + blackJack.getPlayerScore());
             blackJack.printPlayerHand();

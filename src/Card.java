@@ -23,6 +23,10 @@ public class Card {
         return rank.getValue();
     }
 
+    public String getRankName() {
+        return rank.name();
+    }
+
     public boolean equals(Object card) {
         if(!(card instanceof Card)) return false;
         Card otherCard = (Card) card;
