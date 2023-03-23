@@ -23,6 +23,10 @@ public enum Rank {
         this.name = name;
     }
 
+    public int getValue() {
+    	return value;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Rank{");

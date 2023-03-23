@@ -19,6 +19,10 @@ public class Card {
         return suit;
     }
 
+    public int getValue() {
+        return rank.getValue();
+    }
+
     public boolean equals(Object card) {
         if(!(card instanceof Card)) return false;
         Card otherCard = (Card) card;
