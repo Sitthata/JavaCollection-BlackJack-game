@@ -31,8 +31,15 @@ public class BlackJack {
     }
 
     public void printPlayerHand() {
-        System.out.println("Player hand: ");
+        System.out.println("Player Cards: ");
         for(Card card : playerHand) {
+            System.out.println(card.getRank() + " of " + card.getSuit());
+        }
+    }
+
+    public void printDealerHand() {
+        System.out.println("Dealer Cards: ");
+        for(Card card : dealerHand) {
             System.out.println(card.getRank() + " of " + card.getSuit());
         }
     }

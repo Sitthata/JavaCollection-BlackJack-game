@@ -19,9 +19,11 @@ public class Main {
         int choice;
 
         while(playing) {
+
             blackJack.deal();
             System.out.println("Player hand: " + blackJack.getPlayerScore());
             blackJack.printPlayerHand();
+
             System.out.println("Dealing hands...");
             System.out.println("Would you like to Hit or Stay?");
             System.out.println("1 : Hit\n2 : Stay");
@@ -32,20 +34,25 @@ public class Main {
                 case 1:
                     blackJack.hitPlayer();
                     blackJack.hitDealer();
-                    System.out.println("Player hand: " + blackJack.getPlayerScore());
-                    System.out.println("Dealer hand: " + blackJack.getDealerScore());
-                    blackJack.determineWinner();
+
                     break;
                 case 2:
                     blackJack.hitDealer();
-                    System.out.println("Player hand: " + blackJack.getPlayerScore());
-                    System.out.println("Dealer hand: " + blackJack.getDealerScore());
                     break;
                 default:
                     System.out.println("Invalid choice!");
                     break;
             }
-            System.out.println("Would you like to play again? Type 1 for yes, 2 for no.");
+            System.out.println("--------------------");
+            System.out.println("Player hand: " + blackJack.getPlayerScore());
+            blackJack.printPlayerHand();
+            System.out.println("--------------------");
+            System.out.println("Dealer hand: " + blackJack.getDealerScore());
+            blackJack.printDealerHand();
+            System.out.println("--------------------");
+            blackJack.determineWinner();
+
+            System.out.println("\nWould you like to play again? Type 1 for yes, 2 for no.");
             playing = sc.nextInt() == 1;
             System.out.println();
         }
