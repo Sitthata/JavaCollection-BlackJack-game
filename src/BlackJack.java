@@ -52,6 +52,11 @@ public class BlackJack {
     public void hitDealer() {
         Random random = new Random();
         int dealerDeal = random.nextInt(2);
+
+        if (getDealerScore() < 10) {
+            dealerDeal = 1;
+        }
+
         if (dealerDeal == 1) {
             dealerHand.add(deck.draw());
             System.out.println("Dealer hits!");
@@ -60,16 +65,28 @@ public class BlackJack {
         }
     }
 
-    public int getPlayerScore() {
-        return playerHand.stream()
+    private int getScore(List<Card> hand) {
+        int score = hand.stream()
                 .mapToInt(Card::getValue)
                 .sum();
+        if (hand.stream().anyMatch(card -> card.getRankName().equals("ACE")) && score > 21) {
+            score -= 10;
+        }
+        return score;
+    }
+
+    public int getPlayerScore() {
+        return getScore(playerHand);
     }
 
     public int getDealerScore() {
-        return dealerHand.stream()
-                .mapToInt(Card::getValue)
-                .sum();
+        return getScore(dealerHand);
+    }
+
+
+    public void clearHand() {
+        playerHand.clear();
+        dealerHand.clear();
     }
 
     public int determineWinner() {
@@ -77,44 +94,19 @@ public class BlackJack {
         int playerScore = getPlayerScore();
         int dealerScore = getDealerScore();
 
-        if (playerScore > 21) {
-            System.out.println("Player bust!");
-            System.out.println("Dealer wins!");
-            return 0;
-        }
+        int result = (playerScore > 21) ? 0 :
+                (dealerScore > 21) ? 1 :
+                        (playerScore > dealerScore) ? 1 :
+                                (playerScore < dealerScore) ? 0 :
+                                        1; // In case of a tie, player wins
 
-        if (dealerScore > 21) {
-            System.out.println("Dealer bust!");
-            System.out.println("Player wins!");
-            return 1;
-        }
+        String message = (playerScore == dealerScore) ? "It's a tie!" :
+                (playerScore == 21) ? "Player has 21! Player wins!" :
+                        (dealerScore == 21) ? "Dealer has 21! Dealer wins!" :
+                                (result == 1) ? "Player has higher score! Player wins!" :
+                                        "Dealer has higher score! Dealer wins!";
 
-        if (playerScore == dealerScore) {
-            System.out.println("It's a tie!");
-            return 1;
-        }
-
-        if (playerScore == 21) {
-            System.out.println("Player has 21!");
-            System.out.println("Player wins!");
-            return 1;
-        }
-
-        if (dealerScore == 21) {
-            System.out.println("Dealer has 21!");
-            System.out.println("Dealer wins!");
-            return 0;
-        }
-
-        if (playerScore > dealerScore) {
-            System.out.println("Player has higher score!");
-            System.out.println("Player wins!");
-            return 1;
-        }
-
-        System.out.println("Dealer has higher score!");
-        System.out.println("Dealer wins!");
-        return 0;
+        System.out.println(message);
+        return result;
     }
-
 }

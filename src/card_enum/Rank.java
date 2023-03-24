@@ -1,7 +1,7 @@
 package card_enum;
 
 public enum Rank {
-    ACE(1, "1"),
+    ACE(11, "1"),
     TWO(2, "2"),
     THREE(3, "3"),
     FOUR(4, "4"),

@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         blackJack();
+
     }
 
     public static void blackJack() {
@@ -48,6 +50,7 @@ public class Main {
             blackJack.printDealerHand();
             System.out.println("--------------------");
             blackJack.determineWinner();
+            blackJack.clearHand();
 
             System.out.println("\nWould you like to play again? Type 1 for yes, 2 for no.");
             playing = sc.nextInt() == 1;
